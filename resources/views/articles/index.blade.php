@@ -2,16 +2,7 @@
  
 @section('content')
  
-</<!DOCTYPE html>
-<html>
-<head>
-   
-</head>
-<style>
- 
- 
-</style>
-<body>
+
  <br>
 <h1 class="title">Nos articles</h1>
  
@@ -23,10 +14,10 @@
    </div>
 </form
  
- 
+@if (count($articles)>0)
 @foreach ($articles as $article)
 <li> 
-    <a href="/players/{{ $article->id }}">
+    <a href="/articles/{{ $article->id }}">
  
     {{ $article->titre}}  
  
@@ -34,10 +25,10 @@
  
 </li>
 @endforeach
- 
- 
-</body>
-</html>
- 
+@else
+  <p>Aucun articles </p>  
+@endif
+
+
  
 @endsection

@@ -40,10 +40,12 @@ class ArticlesController extends Controller
      */
     public function store(Request $request)
     {
-        //creation d'un nouveau article
+        //La première ligne créera un nouvel objet du modèle Article.
         $article = new Article();
-        $article->titre = request('name');
+        //Insertion des champs de la table article
+        $article->titre = request('titre');
         $article->description = request('description');
+        //sauvegarde dans la bd
         $article->save();
  
         return redirect('/articles');
