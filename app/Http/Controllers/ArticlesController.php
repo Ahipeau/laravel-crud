@@ -14,7 +14,10 @@ class ArticlesController extends Controller
      */
     public function index()
     {
-        //
+        //selectionne tout les articles
+        $articles = Article::all();
+ 
+        return view('articles.index',compact('articles'));
     }
 
     /**
@@ -24,7 +27,9 @@ class ArticlesController extends Controller
      */
     public function create()
     {
-        //
+        //Appeler le formulaire create
+        return view('articles.create');
+
     }
 
     /**
@@ -35,7 +40,13 @@ class ArticlesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //creation d'un nouveau article
+        $article = new Article();
+        $article->titre = request('name');
+        $article->description = request('description');
+        $article->save();
+ 
+        return redirect('/articles');
     }
 
     /**
@@ -46,7 +57,11 @@ class ArticlesController extends Controller
      */
     public function show(Article $article)
     {
-        //
+        //Afficher les informations d'un article selon son id
+        $article = Article::findOrFail($id);
+        return view('articles.show',compact('article')); 
+    
+ 
     }
 
     /**
@@ -57,7 +72,16 @@ class ArticlesController extends Controller
      */
     public function edit(Article $article)
     {
-        //
+        //Mise à jour en fonction de l'id
+        $article = Player::findOrFail($id);
+ 
+        $article->titre = request('titre');
+        $article->description = request('description');
+
+ 
+        $article->save();
+ 
+        return redirect('/articles');
     }
 
     /**

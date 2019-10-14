@@ -13,3 +13,8 @@ DB_CONNECTION=sqlite
  
 ## ETAPE 3: Creation d'une nouvelle table dans la base de données
 Utiliser la commande suivante : php artisan make:migration create_articles_table
+Configurer vos champs dans votre nouvelle migration 
+
+## ETAPE 4: Création du modele et du controller
+Utiliser la commande: php artisan make:controller ArticlesController -r -m Article
+

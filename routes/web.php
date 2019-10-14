@@ -11,6 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'ArticlesController@index')->name('home');
+
+Route::resource('articles','ArticlesController');
