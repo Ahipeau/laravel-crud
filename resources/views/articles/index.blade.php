@@ -26,7 +26,7 @@
 </li>
 @endforeach
 @else
-  <p>Aucun articles </p>  
+  <p>Aucun article </p>  
 @endif
 
 

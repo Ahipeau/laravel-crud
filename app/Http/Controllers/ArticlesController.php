@@ -57,7 +57,7 @@ class ArticlesController extends Controller
      * @param  \App\Article  $article
      * @return \Illuminate\Http\Response
      */
-    public function show(Article $article)
+    public function show($id)
     {
         //Afficher les informations d'un article selon son id
         $article = Article::findOrFail($id);
@@ -72,18 +72,11 @@ class ArticlesController extends Controller
      * @param  \App\Article  $article
      * @return \Illuminate\Http\Response
      */
-    public function edit(Article $article)
+    public function edit($id)
     {
-        //Mise à jour en fonction de l'id
-        $article = Player::findOrFail($id);
- 
-        $article->titre = request('titre');
-        $article->description = request('description');
-
- 
-        $article->save();
- 
-        return redirect('/articles');
+         //
+         $articles = Article::findOrFail($id);
+         return view('articles.edit',compact('articles')); 
     }
 
     /**
@@ -93,9 +86,19 @@ class ArticlesController extends Controller
      * @param  \App\Article  $article
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Article $article)
+    public function update($id)
     {
         //
+        //Mise à jour en fonction de l'id
+        $article = Article::findOrFail($id);
+ 
+        $article->titre = request('titre');
+        $article->description = request('description');
+
+ 
+        $article->save();
+ 
+        return redirect('/articles');
     }
 
     /**
